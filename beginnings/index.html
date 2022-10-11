@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1>Hello World</h1>
+
+    <div id="container"></div>
+
+    <template id="first-template">
+        <h2>This is the first template.</h2>
+    </template>
+
+    <script>
+        // Notes:
+        // The ".content" of the template is a document fragment, not an HTML element.
+        // That's why the click works only for the second rendered template clone.
+        const template = document.getElementById('first-template');
+        const container = document.getElementById('container');
+
+        const clone1 = template.content.cloneNode(true);
+        clone1.addEventListener("click", () => {
+            alert('clone 1 clicked.')
+        })
+        container.appendChild(clone1);
+
+        const clone2 = template.content.firstElementChild.cloneNode(true);
+        clone2.addEventListener("click", () => {
+            alert('clone 2 clicked.')
+        })
+        container.appendChild(clone2);
+    </script>
+
+</body>
+
+</html>
