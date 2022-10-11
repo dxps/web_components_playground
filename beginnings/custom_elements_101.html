@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1>Hello World</h1>
+
+    <div id="container"></div>
+
+    <hello-world></hello-world>
+
+    <script>
+
+        // To create a custom element, we use ES6 class syntax.
+
+        class HelloWorld extends HTMLElement {
+
+            constructor() {
+                super()
+                // Create a shadow dom.
+                const shadow = this.attachShadow({ mode: 'open' });
+                // Create an element.
+                const heading = document.createElement('h2');
+                heading.textContent = 'Hello World';
+                // Append the element to the shadow dom.
+                shadow.appendChild(heading);
+            }
+
+        }
+
+        // Note that "customElements" is a global object.
+        customElements.define("hello-world", HelloWorld);
+
+    </script>
+
+</body>
+
+</html>
